@@ -1,13 +1,11 @@
-FROM debian
+FROM alpine
 
-MAINTAINER Carlos Pérez-Aradros Herce <exekias@gmail.com>
+MAINTAINER Jerry Dempsey jerry@stylee.org
 
-RUN apt-get update && apt-get install -y curl \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache curl
 
 RUN mkdir /caddy \
-&& curl -sL -o /caddy/caddy.tar.gz "https://caddyserver.com/download/build?os=linux&arch=amd64" \
+&& curl -sL -o /caddy/caddy.tar.gz "https://caddyserver.com/download/linux/amd64?plugins=tls.dns.googlecloud&license=personal" \
 && tar -xf /caddy/caddy.tar.gz -C /caddy \
 && mv /caddy/caddy /usr/bin/caddy \
 && chmod 755 /usr/bin/caddy \
