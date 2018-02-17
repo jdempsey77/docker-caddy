@@ -5,7 +5,7 @@ MAINTAINER Jerry Dempsey jerry@stylee.org
 RUN apk add --no-cache curl
 
 RUN mkdir /caddy \
-&& curl -sL -o /caddy/caddy.tar.gz "https://caddyserver.com/download/linux/amd64?plugins=tls.dns.googlecloud&license=personal" \
+&& curl -sL -o /caddy/caddy.tar.gz "https://caddyserver.com/download/linux/amd64?plugins=http.git,http.hugo&license=personal" \
 && tar -xf /caddy/caddy.tar.gz -C /caddy \
 && mv /caddy/caddy /usr/bin/caddy \
 && chmod 755 /usr/bin/caddy \
